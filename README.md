@@ -7,14 +7,19 @@ results in many named entity recognition tasks. However, their multilingual
 performance on part-of-speech tagging tasks has only received little attention.
 
 In this repository, we conduct an extensive evaluation for sequence tagging on
-the Universal Dependencies project. We show that contextualized string embeddings
+the [Universal Dependencies](https://universaldependencies.org) project.
+We show that contextualized string embeddings
 outperform the state-of-the-art neural network approaches like BiLSTMs or deep
 bidirectional encoder representations from transformers (BERT) for PoS tagging,
-resulting in a new state of the art.
+resulting in a new state-of-the-art.
+
+# Changelog
+
+* **14.09.2019**: Initial version released.
 
 # Datasets
 
-We train and evaluate PoS tagging models on 21 language from the Universal
+We train and evaluate PoS tagging models on 21 languages from the Universal
 Dependencies project. The following table shows an overview of
 training, development and test dataset sizes for each language:
 
@@ -46,8 +51,8 @@ The next table gives an overview of languages and language families
 that were used in our experiments - grouping is reproduced from
 [Plank et al. (2016)](https://arxiv.org/abs/1604.05529):
 
-| Language        | Coarse | Fine
-| --------------- | ------ | ----
+| Language        | Coarse           | Fine
+| --------------- | ---------------- | ----
 | Bulgarian (bg)  | Indoeuropean	 | Slavic
 | Czech (cs)      | Indoeuropean	 | Slavic
 | Danish (da)     | Indoeuropean	 | Germanic
@@ -73,7 +78,7 @@ that were used in our experiments - grouping is reproduced from
 # Model
 
 We use the latest version of Flair in our experiments. The next
-figure shows a high-level iverview of the used architecture for
+figure shows a high-level overview of the used architecture for
 PoS tagging:
 
 ![High level overview of our used model.](./figures/PoS_Tagging_System_Overview-1.png)
@@ -95,8 +100,9 @@ in the Universal Dependencies. For the remaining 5 languages
 trained by [Akbik et al. (2018)](https://www.aclweb.org/anthology/C18-1139/).
 
 For each language, a recent Wikipedia dump and various texts from the
-OPUS corpora collection are used for training. A detailed overview can
-be found in the [flair-lms](https://github.com/stefan-it/flair-lms) repository.
+[OPUS corpora collection](http://opus.nlpl.eu/) are used for training.
+A detailed overview can be found in the [flair-lms](https://github.com/stefan-it/flair-lms)
+repository.
 
 Additionally, we trained one language model for over 300 languages on the
 recently released [JW300](https://www.aclweb.org/anthology/P19-1310/) corpus.
@@ -110,7 +116,7 @@ embeddings (*Flair Embeddings*):
 
 | Lang.        | BiLSTM | Adv. 	| MultiBPEmb | BERT + BPEmb	| JW300	| Flair Embeddings
 | ------------ | ------ | ----- | ---------- | ------------ | ----- | ----------------
-| Avg.         | 96.40  | 96.65	| 96.62	     | 96.77	    | 96.77 | 97.59
+| Avg.         | 96.40  | 96.65	| 96.62	     | 96.77	    | 96.77 | **97.59**
 | Indoeuropean | 96.63  | 96.94	| 96.99	     | 97.12	    | 96.99 | 97.78
 | non-Indo.    | 95.41  | 95.62	| 94.87	     | 95.03	    | 95.75 | 96.63
 | Germanic     | 95.49  | 95.80	| 95.97	     | 96.15	    | 96.21 | 96.89
