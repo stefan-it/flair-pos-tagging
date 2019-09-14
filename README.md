@@ -15,7 +15,7 @@ resulting in a new state of the art.
 # Datasets
 
 We train and evaluate PoS tagging models on 21 language from the Universal
-Dependencies project. The following table \ref{ud-stats} shows an overview of
+Dependencies project. The following table shows an overview of
 training, development and test dataset sizes for each language:
 
 | Language        | # Train | # Dev | # Test
@@ -81,9 +81,9 @@ PoS tagging:
 For training our PoS tagging models we use a BiLSTM with a hidden
 size of 256, a mini batch size of 8 and an initial learning rate
 of 0.1. We reduce the learning rate by a factor of 0.5 with a
-patience of 3. This factor determnines the number of epochs with
+patience of 3. This factor determines the number of epochs with
 no improvement after which learning rate will be reduced. We train
-for a maximum of 500 epochs and use stochastic gradien descent as
+for a maximum of 500 epochs and use stochastic gradient descent as
 optimizer. For each language we train PoS tagging models and evaluate
 3 runs and report an averaged accuracy score.
 
@@ -100,7 +100,7 @@ be found in the [flair-lms](https://github.com/stefan-it/flair-lms) repository.
 
 Additionally, we trained one language model for over 300 languages on the
 recently released [JW300](https://www.aclweb.org/anthology/P19-1310/) corpus.
-The corpus size of the JW300 is 2.025.826.977 token. We trained a model
+The corpus size of the JW300 corpus is 2.025.826.977 token. We trained a model
 over 5 epochs (both for the forward and backward language model).
 
 # Results
@@ -138,10 +138,10 @@ embeddings (*Flair Embeddings*):
 | sl           | 96.84  | 98.11	| 98.00	     | 97.90	    | 98.24 | 99.01
 | sv           | 96.69  | 96.70 | 97.30	     | 97.40	    | 97.91 | 98.49
 
-BiLSTM refers to the tagger, proposed by [Plank et al. (2016)](https://arxiv.org/abs/1604.05529).
-Adv. referse to adversarial training as proposed by [Yasunaga et al. (2017)](https://arxiv.org/abs/1711.04903).
+*BiLSTM* refers to the tagger, proposed by [Plank et al. (2016)](https://arxiv.org/abs/1604.05529).
+*Adv.* refers to adversarial training as proposed by [Yasunaga et al. (2017)](https://arxiv.org/abs/1711.04903).
 
-The MultiBPEmb and BERT + BPEmb refer to the [Heinzerling and Strube (2019)](https://arxiv.org/abs/1906.01569)
+*MultiBPEmb* and *BERT + BPEmb* refer to the [Heinzerling and Strube (2019)](https://arxiv.org/abs/1906.01569)
 paper.
 
 ‡ indicates a performance boost of > 1% compared to previous state-of-the-art.
@@ -156,8 +156,8 @@ paper.
 Originally, I wrote a short-paper about the multilingual evaluation that is presented in this
 repository. The paper was accepted at the [Konvens 2019](https://2019.konvens.org/) conference.
 However, I did withdraw the paper because I felt uncomfortable with the analysis section. For
-example it is still unclear, why the performance of the Finnish is over 2% better than previous
+example it is still unclear, why the performance of the Finnish model is over 2% better than previous
 state-of-the-art models, whereas the corpus used for pretraining is relatively small compared to
 other languages.
 
-If you use the pretrained language models in your work, please cite this GitHub repository 🤗
+However, if you use the pretrained language models in your work, please cite this GitHub repository 🤗
