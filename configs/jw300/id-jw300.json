@@ -1,0 +1,16 @@
+{
+    "description": "Indonesian UD with JW300 Flair Embeddings",
+    "language": "Indonesian",
+    "language_code": "id",
+    "conll_path": "./universal-dependencies-1.2",
+    "embeddings": ["word-id", "flair-lm-jw300-forward-v0.1.pt", "flair-lm-jw300-backward-v0.1.pt"],
+    "layers": [],
+    "batch_size": 8,
+    "hidden_size": 256,
+    "max_epochs": 500,
+    "embeddings_storage_mode": "gpu",
+    "pooling_operation": "",
+    "use_crf": true,
+    "use_scalar_mix": false,
+    "train_with_dev": false
+}
