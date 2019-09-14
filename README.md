@@ -15,7 +15,7 @@ resulting in a new state-of-the-art.
 
 # Changelog
 
-* **14.09.2019**: Initial version released.
+* **14.09.2019**: Initial version released. Training and evaluation scripts added.
 
 # Datasets
 
@@ -239,7 +239,6 @@ $ python run_experiment.py --config configs/jw300/bg-jw300.json --number 2
 
 # ToDo
 
-* [ ] Provide training scripts for PoS tagging models
 * [ ] Add download link to the JW300 model in [flair-lms](https://github.com/stefan-it/flair-lms) repository
 
 # Citing
