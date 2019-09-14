@@ -15,7 +15,7 @@ resulting in a new state-of-the-art.
 
 # Changelog
 
-* **14.09.2019**: Initial version released.
+* **14.09.2019**: Initial version released. Training and evaluation scripts added.
 
 # Datasets
 
@@ -152,9 +152,93 @@ paper.
 
 ‡ indicates a performance boost of > 1% compared to previous state-of-the-art.
 
+# Experiments
+
+This section shows how to re-run and re-produce the results for PoS tagging on various
+languages.
+
+## Universal Dependencies v1.2
+
+The train, dev and test datasets are used from:
+
+<https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-1548>
+
+This is the Universal Dependencies corpus in version 1.2.
+
+Thus, this data needs to be downloaded with:
+
+```bash
+curl --remote-name-all https://lindat.mff.cuni.cz/repository/xmlui/bitstream/handle/11234/1-1548{/ud-treebanks-v1.2.tgz}
+```
+
+Extract the downloaded archive with:
+
+```bash
+tar -xzf ud-treebanks-v1.2.tgz
+```
+
+## Runner
+
+The configuration for all experiments are stored in json-based configuration files. They are located in the
+`./configs` folder. In the `./configs` folder you will find two subfolders: `flair` and `jw300`. `flair`
+refers to experiments that use Flair Embeddings, `jw300` refers to experiments with the JW300 Flair Embeddings.
+
+You can easily adjust hyper-parameters or you can even experiment with stacking more embeddings: just have
+a look at the configuration files.
+
+The so called "experiment runner" script has two arguments:
+
+* `--number` - which is used as a kind of identifier for an experiment
+* `--config` - which defines the path to the configuration file
+
+Example usage: if you want to re-produce the experiment for Bulgarian just use:
+
+```bash
+$ python run_experiment.py --config configs/flair/bg-flair.json --number 1
+```
+
+## Evaluation
+
+In order to evaluate a trained PoS tagging model, just use the `predict.py` script. This script
+expects two arguments:
+
+* Language (name), like *Bulgarian*
+* Model path, like `resources/taggers/experiment_Bulgarian_UD_with_Flair_Embeddings_2/best-model.pt`
+
+Please make sure, that you use the full path, incl. the `best-model.pt` part!
+
+Example usage:
+
+```bash
+$ python predict.py Bulgarian resources/taggers/experiment_Bulgarian_UD_with_Flair_Embeddings_1/best-model.pt
+```
+
+## Caveats
+
+If you want to train a model for Czech, then you first need to concatenate all training files:
+
+```bash
+$ cd universal-dependencies-1.2/UD_Czech/
+$ cat cs-ud-train-*.conllu > cs-ud-train.conll
+```
+
+We use all available training files for training a Czech model.
+
+If you want to train a model on the JW300 corpus, you currently need to download these Flair Embeddings manually:
+
+```bash
+$ wget https://schweter.eu/cloud/flair-lms/lm-jw300-forward-v0.1.pt
+$ wget https://schweter.eu/cloud/flair-lms/lm-jw300-backward-v0.1.pt
+```
+
+Then you can e.g. launch an experiment for Bulgarian using the JW300 Flair Embeddings:
+
+```bash
+$ python run_experiment.py --config configs/jw300/bg-jw300.json --number 2
+```
+
 # ToDo
 
-* [ ] Provide training scripts for PoS tagging models
 * [ ] Add download link to the JW300 model in [flair-lms](https://github.com/stefan-it/flair-lms) repository
 
 # Citing

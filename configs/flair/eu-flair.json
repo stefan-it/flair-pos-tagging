@@ -1,0 +1,16 @@
+{
+    "description": "Basque UD with Flair Embeddings",
+    "language": "Basque",
+    "language_code": "eu",
+    "conll_path": "./universal-dependencies-1.2",
+    "embeddings": ["word-eu", "flair-eu-forward", "flair-eu-backward"],
+    "layers": [],
+    "batch_size": 8,
+    "hidden_size": 256,
+    "max_epochs": 500,
+    "embeddings_storage_mode": "gpu",
+    "pooling_operation": "",
+    "use_crf": true,
+    "use_scalar_mix": false,
+    "train_with_dev": false
+}
