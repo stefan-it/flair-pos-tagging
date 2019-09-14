@@ -5,11 +5,7 @@ from dataclasses import dataclass
 
 from flair import logger
 from flair.datasets import UniversalDependenciesCorpus
-from flair.embeddings import (
-    FlairEmbeddings,
-    StackedEmbeddings,
-    WordEmbeddings,
-)
+from flair.embeddings import FlairEmbeddings, StackedEmbeddings, WordEmbeddings
 from flair.models import SequenceTagger
 from flair.trainers import ModelTrainer
 
@@ -84,14 +80,22 @@ class ExperimentRunner:
 
         return StackedEmbeddings(embeddings=token_embeddings)
 
-    def _get_sequence_tagger(self) -> Tuple[SequenceTagger, UniversalDependenciesCorpus]:
+    def _get_sequence_tagger(
+        self
+    ) -> Tuple[SequenceTagger, UniversalDependenciesCorpus]:
         language = self.experiment.language
         language_code = self.experiment.language_code
         conll_path = self.experiment.conll_path
-        corpus = UniversalDependenciesCorpus(data_folder=Path(f'./'),
-                                         train_file=Path(f'{conll_path}/UD_{language}/{language_code}-ud-train.conllu'),
-                                         dev_file=Path(f'{conll_path}/UD_{language}/{language_code}-ud-dev.conllu'),
-                                         test_file=Path(f'{conll_path}/UD_{language}/{language_code}-ud-test.conllu'))
+        corpus = UniversalDependenciesCorpus(
+            data_folder=Path(f"./"),
+            train_file=Path(
+                f"{conll_path}/UD_{language}/{language_code}-ud-train.conllu"
+            ),
+            dev_file=Path(f"{conll_path}/UD_{language}/{language_code}-ud-dev.conllu"),
+            test_file=Path(
+                f"{conll_path}/UD_{language}/{language_code}-ud-test.conllu"
+            ),
+        )
 
         tag_type = "upos"
         tag_dictionary = corpus.make_tag_dictionary(tag_type=tag_type)
