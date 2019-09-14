@@ -237,9 +237,10 @@ Then you can e.g. launch an experiment for Bulgarian using the JW300 Flair Embed
 $ python run_experiment.py --config configs/jw300/bg-jw300.json --number 2
 ```
 
-# ToDo
+More information about the JW300 model can be found
+[here](https://github.com/stefan-it/flair-lms#multilingual-flair-embeddings).
 
-* [ ] Add download link to the JW300 model in [flair-lms](https://github.com/stefan-it/flair-lms) repository
+# ToDo
 
 # Citing
 
